@@ -1,5 +1,3 @@
-using System.IO.Pipes;
-
 namespace sda_onsite_2_temperature_converter.src.Entity
 {
     public class Transaction
@@ -18,6 +16,10 @@ namespace sda_onsite_2_temperature_converter.src.Entity
         public int GetAmount()
         {
             return _amount;
+        }
+        public DateTime GetDate()
+        {
+            return _date;
         }
 
     }

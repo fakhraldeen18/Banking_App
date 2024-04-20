@@ -4,6 +4,7 @@ namespace sda_onsite_2_temperature_converter.src.Entity
     {
         private string _name;
         private Guid _id;
+        private int balance = 0;
         private List<Transaction> _transactions;
 
         public Customer(string name)
@@ -29,21 +30,22 @@ namespace sda_onsite_2_temperature_converter.src.Entity
 
         public int GetBalance()
         {
-            int balance = 0;
+            int GettingBalance = 0;
             _transactions.ForEach(transaction =>
-            balance += transaction.GetAmount()
+            GettingBalance += transaction.GetAmount()
             );
-            if (balance < 0)
+            if (GettingBalance < 0)
             {
                 throw new Exception("Balance Cannot be negative");
             }
             else
             {
+                balance = GettingBalance;
                 return balance;
             }
         }
 
-        public void addTransactions(int amount)
+        public void AddTransactions(int amount)
         {
             var transaction = new Transaction(amount);
             _transactions.Add(transaction);
